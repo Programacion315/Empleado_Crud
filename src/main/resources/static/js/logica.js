@@ -5,19 +5,28 @@ $(document).ready(function(){
     $('#tabla-empleados').DataTable();
 });
 
-function cargarUsuarios(){
-
-      const rawResponse = await fetch('empleado/2343', {
-        method: 'POST',
+async function cargarUsuarios(){
+      const request = await fetch('empleados', {
+        method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({a: 1, b: 'Textual content'})
       });
-      const content = await rawResponse.json();
+      const empleados = await request.json();
 
-      console.log(content);
+      let listadoHtml = '';
+
+      for(let empleado of empleados){
+
+           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+empleado.telefono+'</td><td><a href=""><i class="fas fa-trash"></i></a></td></tr>';
+
+           listadoHtml += empleadoHtml;
+
+      }
+
+      console.log(empleados);
 
 
+      document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;
 }
