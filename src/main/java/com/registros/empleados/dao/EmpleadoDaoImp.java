@@ -23,4 +23,11 @@ public class EmpleadoDaoImp implements  EmpleadoDao{
         String query = "FROM Empleado";
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public void eliminar(Long id) {
+
+        Empleado empleado = entityManager.find(Empleado.class,id);
+        entityManager.remove(empleado);
+    }
 }

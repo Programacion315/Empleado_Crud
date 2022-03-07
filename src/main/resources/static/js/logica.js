@@ -6,7 +6,7 @@ $(document).ready(function(){
 });
 
 async function cargarUsuarios(){
-      const request = await fetch('empleados', {
+      const request = await fetch('api/empleados', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -15,11 +15,17 @@ async function cargarUsuarios(){
       });
       const empleados = await request.json();
 
+
+
       let listadoHtml = '';
 
       for(let empleado of empleados){
 
-           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+empleado.telefono+'</td><td><a href=""><i class="fas fa-trash"></i></a></td></tr>';
+            let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ empleado.id +')"><i class="fas fa-trash"></i></a>';
+
+           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+empleado.telefono+'</td><td>'
+           + botonEliminar +
+           '</td></tr>';
 
            listadoHtml += empleadoHtml;
 
@@ -29,4 +35,23 @@ async function cargarUsuarios(){
 
 
       document.querySelector('#tabla-empleados tbody').outerHTML = listadoHtml;
+}
+
+async function eliminarUsuario(id){
+
+    if(!confirm('Desea eliminar el usuario?')){ //Cartel de si o no automatico, si hizo click en no, corta el flujo
+        return;
+    }
+
+    const request = await fetch('api/empleados/' + id, {
+            method: 'DELETE',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+          });
+
+    location.reload()
+
+    //Eliminar
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.UsesSunMisc;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class EmpleadoController {
     @Autowired //
     private EmpleadoDao empleadoDao;
 
-    @RequestMapping(value = "empleado/{id}")
+    @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.GET) //Metodo por defecto
     public Empleado getEmpleado(@PathVariable Long id){
         Empleado empleado = new Empleado();
         empleado.setId(id);
@@ -29,13 +30,13 @@ public class EmpleadoController {
         return empleado;
     }
 
-    @RequestMapping(value = "empleados")
+    @RequestMapping(value = "api/empleados")
     public List<Empleado> getEmpleados(){
 
         return empleadoDao.getEmpleados();
     }
 
-    @RequestMapping(value = "empleado1")
+    @RequestMapping(value = "api/empleado1")
     public Empleado editarEmpleado(){
 
         Empleado empleado = new Empleado();
@@ -47,16 +48,10 @@ public class EmpleadoController {
         return empleado;
     }
 
-    @RequestMapping(value = "empleado2")
-    public Empleado eliminar(){
+    @RequestMapping(value = "api/empleados/{id}", method = RequestMethod.DELETE)
+    public void eliminar(@PathVariable Long id){
 
-        Empleado empleado = new Empleado();
-        empleado.setNombre("Jorge");
-        empleado.setApellido("Huergo");
-        empleado.setCorreo("Jorge@hot");
-        empleado.setTelefono("87425244");
-
-        return empleado;
+        empleadoDao.eliminar(id);
     }
 
     @RequestMapping(value = "empleado3")
