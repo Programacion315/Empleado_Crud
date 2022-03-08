@@ -21,7 +21,7 @@ public class EmpleadoController {
         empleado.setId(id);
         empleado.setNombre("Jorge");
         empleado.setApellido("Huergo");
-        empleado.setCorreo("Jorge@hot");
+        empleado.setEmail("Jorge@hot");
         empleado.setTelefono("87425244");
 
         return empleado;
@@ -48,7 +48,7 @@ public class EmpleadoController {
         Empleado empleado = new Empleado();
         empleado.setNombre("Jorge");
         empleado.setApellido("Huergo");
-        empleado.setCorreo("Jorge@hot");
+        empleado.setEmail("Jorge@hot");
         empleado.setTelefono("87425244");
 
         return empleado;
@@ -66,7 +66,7 @@ public class EmpleadoController {
         Empleado empleado = new Empleado();
         empleado.setNombre("Jorge");
         empleado.setApellido("Huergo");
-        empleado.setCorreo("Jorge@hot");
+        empleado.setEmail("Jorge@hot");
         empleado.setTelefono("87425244");
 
         return empleado;

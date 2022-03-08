@@ -25,7 +25,7 @@ async function cargarUsuarios(){
 
            let telefonoTexto = usuario.telefono == null ? '-':usuario.telefono;
 
-           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+telefonoTexto+'</td><td>'
+           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.email+"</td><td>"+telefonoTexto+'</td><td>'
            + botonEliminar +
            '</td></tr>';
 

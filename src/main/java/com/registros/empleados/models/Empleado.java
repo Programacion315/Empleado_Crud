@@ -24,7 +24,7 @@ public class Empleado {
     private String apellido;
 
     @Getter @Setter @Column(name = "email")
-    private String correo;
+    private String email;
 
     @Getter @Setter @Column(name = "telefono")
     private String telefono;
