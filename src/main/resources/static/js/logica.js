@@ -23,7 +23,9 @@ async function cargarUsuarios(){
 
             let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ empleado.id +')"><i class="fas fa-trash"></i></a>';
 
-           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+empleado.telefono+'</td><td>'
+           let telefonoTexto = usuario.telefono == null ? '-':usuario.telefono;
+
+           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.correo+"</td><td>"+telefonoTexto+'</td><td>'
            + botonEliminar +
            '</td></tr>';
 
@@ -53,5 +55,5 @@ async function eliminarUsuario(id){
 
     location.reload()
 
-    //Eliminar
+
 }

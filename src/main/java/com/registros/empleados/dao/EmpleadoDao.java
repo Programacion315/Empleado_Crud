@@ -9,4 +9,6 @@ public interface EmpleadoDao {
     List<Empleado> getEmpleados();
 
     void eliminar(Long id);
+
+    void registrar(Empleado empleado);
 }

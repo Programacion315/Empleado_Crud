@@ -30,4 +30,9 @@ public class EmpleadoDaoImp implements  EmpleadoDao{
         Empleado empleado = entityManager.find(Empleado.class,id);
         entityManager.remove(empleado);
     }
+
+    @Override
+    public void registrar(Empleado empleado) {
+        entityManager.merge(empleado);
+    }
 }

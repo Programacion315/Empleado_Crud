@@ -4,10 +4,7 @@ import com.registros.empleados.dao.EmpleadoDao;
 import com.registros.empleados.models.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.UsesSunMisc;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +27,16 @@ public class EmpleadoController {
         return empleado;
     }
 
-    @RequestMapping(value = "api/empleados")
+
+    @RequestMapping(value = "api/empleados", method = RequestMethod.POST)
+    public void registrarEmpleado(@RequestBody Empleado empleado){
+        //Convierte el json que recibo a un usario automaticamente
+        empleadoDao.registrar(empleado);
+    }
+
+
+
+    @RequestMapping(value = "api/empleados", method = RequestMethod.GET)
     public List<Empleado> getEmpleados(){
 
         return empleadoDao.getEmpleados();
