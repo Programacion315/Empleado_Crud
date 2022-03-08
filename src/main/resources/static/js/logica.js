@@ -21,11 +21,12 @@ async function cargarUsuarios(){
 
       for(let empleado of empleados){
 
-            let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ empleado.id +')"><i class="fas fa-trash"></i></a>';
+           console.log("Holis");
+           let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ empleado.id +')"><i class="fas fa-trash"></i></a>';
 
-           let telefonoTexto = usuario.telefono == null ? '-':usuario.telefono;
+           let telefonoTexto = empleado.telefono == null ? '-':empleado.telefono;
 
-           let empleadoHtml = '<tr><th scope="row">1</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.email+"</td><td>"+telefonoTexto+'</td><td>'
+           let empleadoHtml = '<tr><th scope="row">'+empleado.id +'</th><td>'+empleado.nombre +' '+empleado.apellido+"</td><td>"+ empleado.email+"</td><td>"+telefonoTexto+'</td><td>'
            + botonEliminar +
            '</td></tr>';
 
